@@ -107,12 +107,16 @@ for t_idx, test_type in enumerate(test_types):
             if len(j_data['genomicData']) == 0:
                 #all_no_found.append(False)
                 print('case {} genomic data not found'.format(case_id))
-                continue
+                exome_found = [False]
+                pedia_case = False
+                all_no_found.append(False)
+                found_data = []
             # if genomicData is not empty, this case is from PEDIA real case
-            exome_found = [True]
-            pedia_case = True
-            all_no_found.append(True)
-            found_data = []
+            else:
+                exome_found = [True]
+                pedia_case = True
+                all_no_found.append(True)
+                found_data = []
         else:
             g_datas = genomics[case_id]
             exome_found = [is_exome_found(g['genomic_data']) for g in g_datas]
@@ -142,8 +146,6 @@ for t_idx, test_type in enumerate(test_types):
         # the genomic json file to get gene info
         # and further get rank and scores
         for g in found_data:
-            if case_id == '62094':
-                print(g)
             variants = g['genomic_data']['test_result']['variants']
             for v in variants:
                 #print(v)

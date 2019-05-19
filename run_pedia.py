@@ -24,7 +24,7 @@ for idx, f in enumerate(features):
     print(cmd)
     os.system(cmd)
 
-out_dir = os.path.join(result_dir, 'gcc_pedia')
+out_dir = os.path.join(result_dir, 'ggc_pedia')
 cmd = 'python3 classifier/pedia.py {} 1KG -t {} -o {} -p 5'.format(train, test_dir,  out_dir)
 print(cmd)
 os.system(cmd)
